@@ -3,6 +3,7 @@ package com.usal;
 /**
  * 
  * Esta clase define una persona por nombre y apellido
+ * Documentacion sobre su contructor y factory method
  */
 public class Persona {
 
@@ -35,8 +36,11 @@ public class Persona {
  * @return retorna una Persona o lanza una @IllegalArgumentException
  */
     public static Persona fromCSVString(String personaString) {
+        if(personaString==null){
+            throw new IllegalArgumentException("Parametros no validos");
+        }
         String chunks[] = personaString.split(",");
-        if (chunks.length != 2) {
+        if (chunks.length != 2 ) {
             throw new IllegalArgumentException("Parametros no validos");
         } else {
             return new Persona(chunks[0], chunks[1]);   // Esto no puede petar
